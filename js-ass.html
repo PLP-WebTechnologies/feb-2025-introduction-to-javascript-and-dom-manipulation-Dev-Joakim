@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript DOM Manipulation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="main-title">Welcome to My Page</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section>
+      <p id="dynamic-text">This text will change dynamically.</p>
+      <button onclick="changeText()">Change Text</button>
+    </section>
+
+    <section>
+      <p id="style-text">Click the button to change my style!</p>
+      <button onclick="changeStyle()">Change Style</button>
+    </section>
+
+    <section>
+      <div id="removable-container">
+        <p id="removable">I can be removed or added!</p>
+      </div>
+      <button onclick="toggleElement()">Add/Remove Element</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 My Website</p>
+  </footer>
+
+  <script>
+    function changeText() {
+      const textElement = document.getElementById("dynamic-text");
+      textElement.textContent = "The text has been changed dynamically!";
+    }
+
+    function changeStyle() {
+      const styleElement = document.getElementById("style-text");
+      styleElement.style.color = "white";
+      styleElement.style.backgroundColor = "blue";
+      styleElement.style.padding = "10px";
+      styleElement.style.borderRadius = "8px";
+    }
+
+    function toggleElement() {
+      const container = document.getElementById("removable-container");
+      const existingElement = document.getElementById("removable");
+
+      if (existingElement) {
+        container.removeChild(existingElement);
+      } else {
+        const newElement = document.createElement("p");
+        newElement.id = "removable";
+        newElement.textContent = "I have been added back!";
+        container.appendChild(newElement);
+      }
+    }
+  </script>
+</body>
+</html>
